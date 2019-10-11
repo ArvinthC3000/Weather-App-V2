@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WeatherApp-V2</title>
+</head>
+<body>
+        <div class="main">
+            <div class="leftSide"><h1>Weather<span>App</span></div></h1>
+            <div class="rightSide">
+                <div class="margin"></div>
+                <div class="content">
+                    <div></div>
+                    <!-- City & State name, Date and Weather condition -->
+                    <div class="city"><b>Bengaluru, Karnataka</b></div>
+                    <div class="now">
+                        <div class="date1" >Day, Time</div>
+                        <div class="weather">Partly Cloudy ☁️</div>
+                    </div>
+
+                    <!-- Temperature -->
+                    <div class="report">
+                        <div class="degree"><b>26</b></div> <span ><sup>
+                        <span id="myCursor" class="celsius" onclick="inCelsius()">&#8451;</span>
+                        <span class="or">|</span>
+                        <span id="myCursor" class="fahrenheit" onclick="inFahrenheit()">&#8457;</span></sup>
+                    </div></span>
+
+                    <!-- User input -->
+                    <div class="userInput">
+                        <div class="info">Enter City name</div>
+                        <div class="input">
+                            <input type="text" onclick="this.value=''" id="in" placeholder="Eg. City" list="datalist">
+                            <datalist id="datalist">
+                                <option value="Bangalore"></option>
+                                <option value="Chennai"></option>
+                                <option value="Coimbatore"></option>
+                                <option value="Delhi"></option>
+                                <option value="Patna"></option>
+                                <option value="Gurugram"></option>
+                                <option value="Mumbai"></option>
+                                <option value="Amaravati"></option>
+                                <option value="Jaipur"></option>
+                                <option value="Panaji"></option>
+                                <option value="Mysore"></option>
+                                <option value="Madurai"></option>
+                                <option value="Alleppey"></option>
+                                
+                            </datalist>
+                            <span>
+                                <button type="submit" id="submit" onclick="process(document.getElementById('in').value)">&#8594;</button>
+                            </span>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="free"></div>                
+            </div>
+        </div>
+</body>
+<link rel="stylesheet" href="/style/style.css">
+<script src="/script/app.js"></script>
+</html>
