@@ -117,7 +117,8 @@ function process(value){
         array[i]
         return i.city===value;})
         if (arr.length >=1 ){
-        document.getElementsByClassName("city")[0].innerHTML = "<b>"+arr[0].city +", "+ arr[0].state+"</b>";
+        document.getElementsByClassName("city")[0].innerHTML = "<b>"+arr[0].city +", "+"</b>";
+        document.getElementsByClassName("state")[0].innerHTML = "<b>"+arr[0].state+"</b>";
         document.getElementsByClassName("degree")[0].innerHTML = "<b>"+arr[0].degree+"</b>";
         document.getElementsByClassName("weather")[0].innerHTML = arr[0].weather;
         }
