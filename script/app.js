@@ -1,74 +1,32 @@
-// Golbal variables & Data
-const array = [
-    {city:'Bangalore',
-    state:'Karnataka',
-    degree :26,
-    weather:'Partly Cloudy ☁️',
-    image:'images/cloudy.svg'},
-    {city:'Chennai',
-    state:'TamilNadu',
-    degree :34,
-    weather:'Sunny ☀️',
-    image:'images/sunny.svg'},
-    {city:'Coimbatore',
-    state:'TamilNadu',
-    degree :26,
-    weather:'Partly Cloudy ☁️',
-    image:'images/cloudy.svg'},
-    {city:'Noida',
-    state:'Delhi',
-    degree :23,
-    weather:'Thunder 🌩️',
-    image:'images/thunder.svg'},
-    {city:'Patna',
-    state:'Bihar',
-    degree :30,
-    weather:'Humidity',
-    image:'image/humid.svg'},
-    {city:'Gurugram',
-    state:'Haryana',
-    degree :34,
-    weather:'Sunny ☀️',
-    image:'images/sunny.svg'},
-    {city:'Mumbai',
-    state:'Maharashtra',
-    degree :20,
-    weather:'Rainy 🌧️',
-    image:'images/rainy.svg'},
-    {city:'Amaravati',
-    state:'Andra Pradesh',
-    degree :23,
-    weather:'Humidity',
-    image:'image/humid.svg'},
-    {city:'Jaipur',
-    state:'Rajasthan',
-    degree :32,
-    weather:'Sunny ☀️',
-    image:'images/sunny.svg'},
-    {city:'Panaji',
-    state:'Goa',
-    degree :22,
-    weather:'Rainy 🌧️',
-    image:'images/rainy.svg'},
-    {city:'Mysore',
-    state:'Karnataka',
-    degree :24,
-    weather:'Partly Cloudy ☁️',
-    image:'images/cloudy.svg'},
-    {city:'Madurai',
-    state:'TamilNadu',
-    degree :35,
-    weather:'Sunny ☀️',
-    image:'images/sunny.svg'},
-    {city:'Alleppey',
-    state:'Kerala',
-    degree :20,
-    weather:'Rainy 🌧️',
-    image:'images/rainy.svg'}   
-];
+const key = "b86155febf4e7416656ad26119562ec3" ;
 
+function getData(){
+    const cityName = document.getElementById('in').value;
+    console.log(cityName);
+    fetch('http://api.openweathermap.org/data/2.5/weather?q='+cityName+'&appid='+key)
+    .then(function(resp) { 
+        console.log(json())
+        return resp.json() }) // Convert data to json
+	.then(function(data) {
+        drawWeather(data);
+        showFahrenheit(data)
 
-let arr = [];
+	})
+	.catch(function() {
+	});
+}
+function drawWeather( d ) {
+    let celcius = Math.round(parseFloat(d.main.temp)-273.15);	
+    let description = d.weather[0].description; 
+    console.log(d)
+    let country = d.sys.country;
+  
+      console.log(description);
+      document.getElementById('showDescription').innerHTML = description;
+      document.getElementById('showDegree').innerHTML = celcius;
+      document.getElementById('showCity').innerHTML = d.name;
+      document.getElementById('showCountry').innerHTML = country;   
+  }
 
 
 // Event listeners
@@ -112,18 +70,18 @@ let date1= new Date();
 
 
 
-function process(value){
-    arr = array.filter((i)=> {
-        array[i]
-        return i.city===value;})
-        if (arr.length >=1 ){
-        document.getElementsByClassName("city")[0].innerHTML = "<b>"+arr[0].city +", "+"</b>";
-        document.getElementsByClassName("state")[0].innerHTML = "<b>"+arr[0].state+"</b>";
-        document.getElementsByClassName("degree")[0].innerHTML = "<b>"+arr[0].degree+"</b>";
-        document.getElementsByClassName("weather")[0].innerHTML = arr[0].weather;
-        }
+// function process(value){
+//     arr = array.filter((i)=> {
+//         array[i]
+//         return i.city===value;})
+//         if (arr.length >=1 ){
+//         document.getElementsByClassName("city")[0].innerHTML = "<b>"+arr[0].city +", "+"</b>";
+//         document.getElementsByClassName("state")[0].innerHTML = "<b>"+arr[0].state+"</b>";
+//         document.getElementsByClassName("degree")[0].innerHTML = "<b>"+arr[0].degree+"</b>";
+//         document.getElementsByClassName("weather")[0].innerHTML = arr[0].weather;
+//         }
 
-}
+// }
 
 function inFahrenheit(){
     process();
