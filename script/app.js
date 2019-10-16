@@ -1,46 +1,55 @@
 const key = "b86155febf4e7416656ad26119562ec3" ;
+init();
+
+// Functions
+
+function init(){
+
+    date();
+
+    // Event listeners
+    var input = document.getElementById("in");
+    input.addEventListener("keyup", function(event) {
+        
+    if (event.keyCode === 13) {
+        document.getElementById("submit").click();
+    }
+    })
+
+}
 
 function getData(){
-    const cityName = document.getElementById('in').value;
-    console.log(cityName);
+    let cityName = document.getElementById('in').value;
     fetch('http://api.openweathermap.org/data/2.5/weather?q='+cityName+'&appid='+key)
-    .then(function(resp) { 
-        console.log(json())
+    .then(function(resp) {       
+    console.log(cityName);
         return resp.json() }) // Convert data to json
 	.then(function(data) {
-        drawWeather(data);
-        showFahrenheit(data)
+        putData(data);
 
 	})
 	.catch(function() {
 	});
 }
-function drawWeather( d ) {
-    let celcius = Math.round(parseFloat(d.main.temp)-273.15);	
-    let description = d.weather[0].description; 
-    console.log(d)
-    let country = d.sys.country;
+function putData( indvidualDatum ) {
+    let celcius = Math.round(parseFloat(indvidualDatum.main.temp)-273.15);	
+    let description = indvidualDatum.weather[0].description; 
+    console.log(indvidualDatum)
+    let cityName = indvidualDatum.name;
+
+    let country = indvidualDatum.sys.country;
   
-      console.log(description);
-      document.getElementById('showDescription').innerHTML = description;
-      document.getElementById('showDegree').innerHTML = celcius;
-      document.getElementById('showCity').innerHTML = d.name;
-      document.getElementById('showCountry').innerHTML = country;   
+      document.getElementById('weather').innerText = description ;
+      document.getElementById('degree').innerHTML = '<b>'+celcius+'</b>';
+      document.getElementById('city').innerHTML = '<b>' + cityName + ',</b>';
+    //   console.log(cityName);
+    //   console.log(description)
+      document.getElementById('state').innerHTML = '<b>' + country + '</b>' ;  
+      console.log(description)
+      
+      console.log(cityName); 
   }
 
-
-// Event listeners
-document.addEventListener(onload, date());
-
-var input = document.getElementById("in");
-input.addEventListener("keyup", function(event) {
-    
-  if (event.keyCode === 13) {
-    document.getElementById("submit").click();
-  }
-})
-
-// Functions
 function date(){
 let date1= new Date();
     let dayInNum = date1.getDay();
@@ -68,29 +77,15 @@ let date1= new Date();
     var t = setTimeout(date , 1000);
 }
 
-
-
-// function process(value){
-//     arr = array.filter((i)=> {
-//         array[i]
-//         return i.city===value;})
-//         if (arr.length >=1 ){
-//         document.getElementsByClassName("city")[0].innerHTML = "<b>"+arr[0].city +", "+"</b>";
-//         document.getElementsByClassName("state")[0].innerHTML = "<b>"+arr[0].state+"</b>";
-//         document.getElementsByClassName("degree")[0].innerHTML = "<b>"+arr[0].degree+"</b>";
-//         document.getElementsByClassName("weather")[0].innerHTML = arr[0].weather;
-//         }
-
-// }
-
 function inFahrenheit(){
-    process();
-    const celsius = array[0].degree || array[0].degree ||26;
+    // process();
+    const celsius =26;
     document.getElementsByClassName("celsius")[0].style.color = "#000000";
     document.getElementsByClassName("fahrenheit")[0].style.color = "#1890f0";
     
     const fahrenheit= Math.floor(celsius*1.8+32)
-    document.getElementsByClassName("degree")[0].innerHTML = "<b>"+fahrenheit+"</b>";
+    console.log(fahrenheit);
+    document.getElementById("degree").innerHTML = "<b>"+fahrenheit+"</b>";
     
 }
 function inCelsius(){
@@ -98,9 +93,9 @@ function inCelsius(){
     document.getElementsByClassName("celsius")[0].style.color = "#1890f0";
     document.getElementsByClassName("fahrenheit")[0].style.color = "#000000";
     if (arr.length >1 ){
-        document.getElementsByClassName("degree")[0].innerHTML = "<b>"+arr[0].degree+"</b>";
+        document.getElementById("degree").innerHTML = "<b>"+arr[0].degree+"</b>";
         }
     else{
-        document.getElementsByClassName("degree")[0].innerHTML = "<b>"+26+"</b>";
+        document.getElementById("degree").innerHTML = "<b>"+26+"</b>";
     }
 }
