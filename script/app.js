@@ -1,5 +1,6 @@
 const key = "b86155febf4e7416656ad26119562ec3" ;
 let gData;
+let celsius;
 init();
 
 // Functions
@@ -30,25 +31,6 @@ function showLocation(position) {
        alert("Error: Position is unavailable!");
     }
  }
-
-// function codeLatLng(lat, lng) {
-//     var geocoder = new google.maps.Geocoder();
-//     var latlng = new google.maps.LatLng(lat, lng);
-//     geocoder.geocode({'latLng': latlng}, function(results, status) {
-//       if(status == google.maps.GeocoderStatus.OK) {
-//           console.log(results)
-//           if(results[1]) {
-//               //formatted address
-//               var address = results[0].formatted_address;
-//               alert("address = " + address);
-//           } else {
-//               alert("No results found");
-//           }
-//       } else {
-//           alert("Geocoder failed due to: " + status);
-//       }
-//     });
-// }
 
 function init(){
 
@@ -81,7 +63,9 @@ function getData(){
 	});
 }
 function putData( indvidualDatum ) {
-    let celcius = Math.round(parseFloat(indvidualDatum.main.temp)-273.15);	
+    let celcius = Math.round(parseFloat(indvidualDatum.main.temp)-273.15);
+    celsius =  celcius;
+    console.log(celsius);	
     let description = indvidualDatum.weather[0].description; 
     console.log(indvidualDatum)
     let cityName = indvidualDatum.name;
@@ -91,9 +75,6 @@ function putData( indvidualDatum ) {
       document.getElementById('degree').innerHTML = '<b>'+celcius+'</b>';
       document.getElementById('city').innerHTML = '<b>' + cityName + ',</b>';
       document.getElementById('state').innerHTML = '<b>' + country + '</b>' ;  
-      console.log(description)
-      
-      console.log(cityName); 
   }
 
 function date(){
@@ -124,18 +105,23 @@ let date1= new Date();
 }
 
 function inFahrenheit(){
-    getData();
+    // let flag
     document.getElementsByClassName("celsius")[0].style.color = "#000000";
     document.getElementsByClassName("fahrenheit")[0].style.color = "#1890f0";
-
-    const fahrenheit= Math.floor(celsius*1.8+32)
+    let celsius = document.getElementById('degree').innerText
+    
+    console.log(celsius);
+    let fahrenheit= Math.floor(celsius*1.8+32)
     console.log(fahrenheit);
     document.getElementById("degree").innerHTML = "<b>"+fahrenheit+"</b>";
     
 }
 function inCelsius(){
+    let fahrenheit = document.getElementById('degree').innerText;
+    // let celsius= Math.floor((fahrenheit-32)/1.8)
+
     document.getElementsByClassName("celsius")[0].style.color = "#1890f0";
     document.getElementsByClassName("fahrenheit")[0].style.color = "#000000";
-    document.getElementById("degree").innerHTML = "<b>"+celcius+"</b>";
+    document.getElementById("degree").innerHTML = "<b>"+celsius+"</b>";
 
 }
