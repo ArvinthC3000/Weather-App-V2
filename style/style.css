@@ -69,16 +69,16 @@ body{
     height: 100%;
     padding: 0px 50px;
 }
-.content .city{
+#city{
     font-size: 2em;
 }
-.content .state{
+#state{
     font-size: 2em;
 }
 .content .report{
     display: flex;
 }
-.content .report .degree{
+#degree{
     font-size: 3em;
 }
 .content .report .celsius{
@@ -156,16 +156,16 @@ body{
         display: grid;
         grid-template-rows:.8fr .2fr .2fr .5fr 1.5fr;
     }
-    .content .city{
+    #city{
         font-size: 2em;
     }
-    .content .state{
+    #state{
         font-size: 2em;
     }
     .content .report{
         display: flex;
     }
-    .content .report .degree{
+    #degree{
         font-size: 3em;
     }
     .content .report .celsius{
