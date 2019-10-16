@@ -1,11 +1,60 @@
 const key = "b86155febf4e7416656ad26119562ec3" ;
+let gData;
 init();
 
 // Functions
 
+function getLocation() {
+
+    if(navigator.geolocation) {
+       
+       // timeout at 60000 milliseconds (60 seconds)
+       var options = {timeout:60000};
+       navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+    } else {
+       alert("Sorry, browser does not support geolocation!");
+    }
+ }
+		
+function showLocation(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    alert("Latitude : " + latitude + " Longitude: " + longitude);
+    codeLatLng(latitude, longitude);
+ }
+
+ function errorHandler(err) {
+    if(err.code == 1) {
+       alert("Error: Access is denied!");
+    } else if( err.code == 2) {
+       alert("Error: Position is unavailable!");
+    }
+ }
+
+// function codeLatLng(lat, lng) {
+//     var geocoder = new google.maps.Geocoder();
+//     var latlng = new google.maps.LatLng(lat, lng);
+//     geocoder.geocode({'latLng': latlng}, function(results, status) {
+//       if(status == google.maps.GeocoderStatus.OK) {
+//           console.log(results)
+//           if(results[1]) {
+//               //formatted address
+//               var address = results[0].formatted_address;
+//               alert("address = " + address);
+//           } else {
+//               alert("No results found");
+//           }
+//       } else {
+//           alert("Geocoder failed due to: " + status);
+//       }
+//     });
+// }
+
 function init(){
 
+    getData()
     date();
+    // getLocation();
 
     // Event listeners
     var input = document.getElementById("in");
@@ -19,7 +68,7 @@ function init(){
 }
 
 function getData(){
-    let cityName = document.getElementById('in').value;
+    let cityName = document.getElementById('in').value || "Bangalore";
     fetch('http://api.openweathermap.org/data/2.5/weather?q='+cityName+'&appid='+key)
     .then(function(resp) {       
     console.log(cityName);
@@ -36,14 +85,11 @@ function putData( indvidualDatum ) {
     let description = indvidualDatum.weather[0].description; 
     console.log(indvidualDatum)
     let cityName = indvidualDatum.name;
-
     let country = indvidualDatum.sys.country;
   
       document.getElementById('weather').innerText = description ;
       document.getElementById('degree').innerHTML = '<b>'+celcius+'</b>';
       document.getElementById('city').innerHTML = '<b>' + cityName + ',</b>';
-    //   console.log(cityName);
-    //   console.log(description)
       document.getElementById('state').innerHTML = '<b>' + country + '</b>' ;  
       console.log(description)
       
@@ -78,24 +124,18 @@ let date1= new Date();
 }
 
 function inFahrenheit(){
-    // process();
-    const celsius =26;
+    getData();
     document.getElementsByClassName("celsius")[0].style.color = "#000000";
     document.getElementsByClassName("fahrenheit")[0].style.color = "#1890f0";
-    
+
     const fahrenheit= Math.floor(celsius*1.8+32)
     console.log(fahrenheit);
     document.getElementById("degree").innerHTML = "<b>"+fahrenheit+"</b>";
     
 }
 function inCelsius(){
-    process();
     document.getElementsByClassName("celsius")[0].style.color = "#1890f0";
     document.getElementsByClassName("fahrenheit")[0].style.color = "#000000";
-    if (arr.length >1 ){
-        document.getElementById("degree").innerHTML = "<b>"+arr[0].degree+"</b>";
-        }
-    else{
-        document.getElementById("degree").innerHTML = "<b>"+26+"</b>";
-    }
+    document.getElementById("degree").innerHTML = "<b>"+celcius+"</b>";
+
 }
