@@ -36,7 +36,6 @@ function init(){
 
     getData()
     date();
-    // getLocation();
 
     // Event listeners
     var input = document.getElementById("in");
@@ -52,8 +51,7 @@ function init(){
 function getData(){
     let cityName = document.getElementById('in').value || "Bangalore";
     fetch('http://api.openweathermap.org/data/2.5/weather?q='+cityName+'&appid='+key)
-    .then(function(resp) {       
-    console.log(cityName);
+    .then(function(resp) {   
         return resp.json() }) // Convert data to json
 	.then(function(data) {
         putData(data);
@@ -65,9 +63,8 @@ function getData(){
 function putData( indvidualDatum ) {
     let celcius = Math.round(parseFloat(indvidualDatum.main.temp)-273.15);
     celsius =  celcius;
-    console.log(celsius);	
-    let description = indvidualDatum.weather[0].description; 
-    console.log(indvidualDatum)
+    let descriptionInLowerCase = indvidualDatum.weather[0].description; 
+    let description = descriptionInLowerCase.charAt(0).toUpperCase() + descriptionInLowerCase.slice(1)
     let cityName = indvidualDatum.name;
     let country = indvidualDatum.sys.country;
   
@@ -105,20 +102,16 @@ let date1= new Date();
 }
 
 function inFahrenheit(){
-    // let flag
     document.getElementsByClassName("celsius")[0].style.color = "#000000";
     document.getElementsByClassName("fahrenheit")[0].style.color = "#1890f0";
     let celsius = document.getElementById('degree').innerText
     
-    console.log(celsius);
     let fahrenheit= Math.floor(celsius*1.8+32)
-    console.log(fahrenheit);
     document.getElementById("degree").innerHTML = "<b>"+fahrenheit+"</b>";
     
 }
 function inCelsius(){
     let fahrenheit = document.getElementById('degree').innerText;
-    // let celsius= Math.floor((fahrenheit-32)/1.8)
 
     document.getElementsByClassName("celsius")[0].style.color = "#1890f0";
     document.getElementsByClassName("fahrenheit")[0].style.color = "#000000";
