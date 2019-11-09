@@ -1,3 +1,4 @@
+// 
 const key = "b86155febf4e7416656ad26119562ec3" ;
 let gData;
 let celsius;
