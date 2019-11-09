@@ -15,7 +15,7 @@ function getLocation() {
        var options = {timeout:60000};
        navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
     } else {
-       alert("Sorry, browser does not support geolocation!");
+       alert("Sorry, browser does not support geolocation!\nPlease enter the location manually");
     }
  }
 		
