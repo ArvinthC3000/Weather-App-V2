@@ -73,7 +73,7 @@ function putData( indvidualDatum ) {
       document.getElementById('weather').innerText = description ;
       document.getElementById('degree').innerHTML = '<b>'+celcius+'</b>';
       document.getElementById('city').innerHTML = '<b>' + cityName + ',</b>';
-      document.getElementById('state').innerHTML = '<b>' + country + '</b>' ;  
+      document.getElementById('state').innerHTML = '<b>' + "Gokul" + '</b>' ;  
   }
 
 function date(){
