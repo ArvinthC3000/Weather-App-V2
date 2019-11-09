@@ -51,7 +51,7 @@ function init(){
 
 function getData(){
     let cityName = document.getElementById('in').value || "Bangalore";
-    fetch('http://api.openweathermap.org/data/2.5/weather?q='+cityName+'&appid='+key)
+    fetch('https://api.openweathermap.org/data/2.5/weather?q='+cityName+'&appid='+key)
     .then(function(resp) {   
         return resp.json() }) // Convert data to json
 	.then(function(data) {
