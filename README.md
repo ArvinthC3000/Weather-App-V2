@@ -10,10 +10,10 @@ Both Desktop and Mobile responsive
 ![Desktop Layout](https://github.com/ArvinthC3000/WeatherApp-V2/blob/master/images/Desktop.png)
 
 ## How to use?
-Just follow the [link](https://arvinthc3000.github.io/WeatherApp-V2/).    
+Just follow this [link](https://arvinthc3000.github.io/WeatherApp-V2/).    
 This'll automatically redirect you to the hosted page
 
-* By default it'll show Weather condition of Bangalore.
+* By default it'll show the weather details of Bangalore.
 * By entering the location you wanted to check in input text area and clicking on 'Enter' and as the credential/location details exists, it'll show the weather details of that place 
 
 ## Author
