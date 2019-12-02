@@ -7,7 +7,7 @@ Both Desktop and Mobile responsive
 
 # Design
 ## Desktop
-[Desktop Layout](https://github.com/ArvinthC3000/WeatherApp-V2/blob/master/images/Desktop.png)
+![Desktop Layout](https://github.com/ArvinthC3000/WeatherApp-V2/blob/master/images/Desktop.png)
 
 ## Author
 ### Arvinth C    
