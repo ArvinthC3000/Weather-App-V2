@@ -1,5 +1,3 @@
-console.log("here")
-// 
 const key = "b86155febf4e7416656ad26119562ec3" ;
 let gData;
 let celsius;
@@ -11,7 +9,6 @@ function getLocation() {
 
     if(navigator.geolocation) {
        
-       // timeout at 60000 milliseconds (60 seconds)
        var options = {timeout:60000};
        navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
     } else {
