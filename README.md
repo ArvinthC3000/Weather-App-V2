@@ -23,5 +23,5 @@ email: arvinthc97@gmail.com
 
 ## References
 * [JQuery](https://jquery.com/)
-* [JavaScript-ES6](https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data) - to fetch
+* [JavaScript-ES6](https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data)
 * [Bootstrap](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
